@@ -1,0 +1,156 @@
+.body{
+    font-family: Arial, Helvetica, sans-serif;
+
+    
+}
+
+.counter-container{
+    width: auto;
+    height: auto;
+    text-align: center;
+    background-color: rgb(233, 183, 167);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 10px;
+    
+
+}
+.counter-container .counter-button{
+   width: 150px;
+   height: 50px;
+   font-size: 1.5em;
+   margin-inline: 5px;
+   font-weight: bold;
+   background-color: rgb(200, 179, 179);
+   border-radius: 10px;
+   margin-bottom: 30px;
+   cursor: pointer;
+
+}
+.counter-container .count-display{
+     margin: auto;
+     font-size: 10em;
+     margin-bottom: auto;
+     
+    
+}
+.form-component{
+    
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(244, 223, 103);;
+    border-radius: 10px;
+    border: 2px solid;
+}
+.form-component .input-area{
+    background-color:rgb(44, 36, 38);
+    border-radius: 10px;
+    color: white;
+}
+
+.color-picker-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.color-picker-container .heading{
+    margin: 30px;
+    font-size: 3rem;
+    color: rgb(49, 14, 119);
+  
+
+}
+.color-display{
+    width: 250px;
+    height: 200px;
+    border: 3px solid  rgb(177, 166, 166);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: 0.25s ease;
+}
+.color-picker-container label{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(49, 14, 119);
+   
+
+}
+.color-picker-container input[type="color"]{
+    width: 75px;
+    height: 30px;
+    border: 2px solid rgb(177, 166, 166);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.favorite{
+    margin: 20px;
+    background-color: rgb(228, 147, 89);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+.favorite p{
+    color: rgb(31, 31, 113);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.favorite input{
+    border-radius: 10px;
+    color: rgb(72, 17, 28);
+    cursor: pointer;
+}
+.food-container{
+    background-color: rgb(163, 211, 211);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: disc;
+    margin:20px 20px;
+    border-radius: 10px;
+    
+}
+.food-container input{
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 3px solid purple;
+}
+.food-container button {
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    margin-bottom: 10px;
+
+}
+.car-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blueviolet;
+    margin:20px 20px;
+    border-radius: 10px;
+}
+.car-container h2{
+    color: rgb(189, 204, 204);
+}
+.car-container button{
+    border-radius: 5px;
+    border: 3px solid rgb(118, 118, 13);
+    margin: 10px;
+}
+.car-container li{
+    color: beige;
+    cursor: pointer;
+}
+.food-container li{
+    cursor: pointer;
+}
