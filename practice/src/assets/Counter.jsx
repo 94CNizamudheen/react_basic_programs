@@ -8,7 +8,7 @@ function Counter(){
         setCount(count+1)
     };
     const decrement=()=>{
-        setCount(count-1);
+        setCount( count>0 ? count-1 : count);
     }
     const reset=()=>{
         setCount(0)
