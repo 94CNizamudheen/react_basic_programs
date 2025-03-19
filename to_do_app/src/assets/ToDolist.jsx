@@ -47,8 +47,10 @@ function ToDoList() {
     };
 
     function toggleCompleate(index) {
-        const updatedTasks = tasks.map((task, i) => i === index ? { ...task, compleated: !task.compleated } : task);
-        setTasks(updatedTasks);
+        const updatedTasks = [...tasks];
+        updatedTasks[index].compleated=!updatedTasks[index].compleated;
+        const sortedTasks= updatedTasks.sort((a,b)=>a.compleated-b.compleated);
+        setTasks([...sortedTasks])
     };
 
     function startEditing(index) {
