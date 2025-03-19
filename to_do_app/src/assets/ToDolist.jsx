@@ -8,16 +8,22 @@ function ToDoList() {
     const [newTask, setNewTask] = useState("");
     const [editingIndex, setEditingIndex] = useState(null);
     const [editText, setEditText] = useState('');
+    const [error, setError] = useState("")
 
 
-    // function inputChange(e) {
-    //     setNewTask(e.target.value);
-    // };
+
     function addTask() {
-        if (newTask.trim() !== "") {
-            setTasks(t => [...t, { text: newTask, compleated: false }]);
-            setNewTask('');
+        if (newTask.trim() === "") {
+            setError("Task cannot be empty")
+            return
         }
+        if (tasks.some(task => task.text.toLowerCase() === newTask.toLowerCase())) {
+            setError("Task Already exists");
+            return;
+        }
+        setTasks(t => [...t, { text: newTask, compleated: false }]);
+        setNewTask('');
+        setError('')
 
     };
     function deleteTask(index) {
@@ -51,12 +57,19 @@ function ToDoList() {
     };
 
     function saveEdit(index) {
-        if (editText.trim() !== "") {
-            const updatedTasks = tasks.map((task, i) => i === index ? { ...task, text: editText } : task);
-            setTasks(updatedTasks);
-            setEditingIndex(null);
-            setEditText("");
+        if (editText.trim() == "") {
+            setError("Task cannot be empty")
+            return
         }
+        if(tasks.some((task,i)=>i!==index && task.text.toLowerCase()===editText.toLowerCase())){
+            setError("Task Already exists");
+            return
+        }
+        const updatedTasks=tasks.map((task,i)=> i===index ? {...task,text:editText} : task );
+        setTasks(updatedTasks);
+        setError('');
+        setEditingIndex(null);
+        setEditText('');
     };
 
 
@@ -71,23 +84,24 @@ function ToDoList() {
                     onChange={(e) => setNewTask(e.target.value)} />
                 <button className="add-button" onClick={addTask} >Add</button>
             </div>
+            {error && <p style={{color:"red"}} >{error}</p> }
             <ol>
                 {tasks.map((task, index) =>
                     <li key={index}>
                         <input type="checkbox" className="check-box" checked={task.compleated} onChange={() => toggleCompleate(index)} />
                         {editingIndex === index ? (
-                        <>
-                            <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} />
-                            <button className="save-button" onClick={() => saveEdit(index)}>Save</button>
-                        </>
-                        ) :(
-                        <>
-                            <span className="text" style={{ textDecoration: task.compleated ? 'line-through' : 'none' }}>{task.text}</span>
-                            <button className="edit-button" onClick={()=>startEditing(index)}>Edit</button>
-                            <button className="delete-button" onClick={() => deleteTask(index)}>Delete</button>
-                            <button className="up-button" onClick={() => moveTaskUp(index)}>Up ⬆ </button>
-                            <button className="down-button" onClick={() => moveTaskDown(index)}>Down ⬇ </button>
-                        </>
+                            <>
+                                <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} />
+                                <button className="save-button" onClick={() => saveEdit(index)}>Save</button>
+                            </>
+                        ) : (
+                            <>
+                                <span className="text" style={{ textDecoration: task.compleated ? 'line-through' : 'none' }}>{task.text}</span>
+                                <button className="edit-button" onClick={() => startEditing(index)}>Edit</button>
+                                <button className="delete-button" onClick={() => deleteTask(index)}>Delete</button>
+                                <button className="up-button" onClick={() => moveTaskUp(index)}>Up ⬆ </button>
+                                <button className="down-button" onClick={() => moveTaskDown(index)}>Down ⬇ </button>
+                            </>
                         )}
 
                     </li>
